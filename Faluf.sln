@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faluf.WASM.Server", "Faluf.WASM.Server\Faluf.WASM.Server.csproj", "{109D4001-2ED4-4004-BD28-ADCB15C4D1D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faluf.WASM.Client", "Faluf.WASM.Client\Faluf.WASM.Client.csproj", "{FE950701-2A5F-4BC5-9688-9AECCAD6E4F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faluf.WASM.Core", "Faluf.WASM.Core\Faluf.WASM.Core.csproj", "{A4AC6264-41E1-40D6-89A7-E0F669054E9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faluf.WASM.Infrastructure", "Faluf.WASM.Infrastructure\Faluf.WASM.Infrastructure.csproj", "{E7749F6F-2658-454E-9D6F-A0C6ACA247DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faluf.WASM.SharedBlazorUI", "Faluf.WASM.SharedBlazorUI\Faluf.WASM.SharedBlazorUI.csproj", "{06FC14A8-B366-447D-8160-E4FF23AE2B25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{109D4001-2ED4-4004-BD28-ADCB15C4D1D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{109D4001-2ED4-4004-BD28-ADCB15C4D1D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{109D4001-2ED4-4004-BD28-ADCB15C4D1D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{109D4001-2ED4-4004-BD28-ADCB15C4D1D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE950701-2A5F-4BC5-9688-9AECCAD6E4F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE950701-2A5F-4BC5-9688-9AECCAD6E4F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE950701-2A5F-4BC5-9688-9AECCAD6E4F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE950701-2A5F-4BC5-9688-9AECCAD6E4F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4AC6264-41E1-40D6-89A7-E0F669054E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4AC6264-41E1-40D6-89A7-E0F669054E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4AC6264-41E1-40D6-89A7-E0F669054E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4AC6264-41E1-40D6-89A7-E0F669054E9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7749F6F-2658-454E-9D6F-A0C6ACA247DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7749F6F-2658-454E-9D6F-A0C6ACA247DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7749F6F-2658-454E-9D6F-A0C6ACA247DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7749F6F-2658-454E-9D6F-A0C6ACA247DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06FC14A8-B366-447D-8160-E4FF23AE2B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06FC14A8-B366-447D-8160-E4FF23AE2B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06FC14A8-B366-447D-8160-E4FF23AE2B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06FC14A8-B366-447D-8160-E4FF23AE2B25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E48B928F-E17F-4CF8-A887-E4D3061D48E9}
+	EndGlobalSection
+EndGlobal

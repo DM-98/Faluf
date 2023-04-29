@@ -1,0 +1,65 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider IsDarkMode="true" Theme="falufTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+	<MudAppBar DisableGutters="true">
+		<MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" OnClick="() => showNavigationMenu = !showNavigationMenu" />
+
+		<MudSpacer />
+
+		<MudMenu Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" AnchorOrigin="Origin.BottomLeft" Class="me-2">
+			<MudMenuItem>Terms & Service</MudMenuItem>
+			<MudMenuItem>Privacy Policy</MudMenuItem>
+			<MudMenuItem>Contact</MudMenuItem>
+		</MudMenu>
+
+		<MudFab Href="/signin" Color="Color.Tertiary" Label="Sign in" Size="Size.Small" StartIcon="@Icons.Material.Filled.PersonOutline" Class="me-4" />
+	</MudAppBar>
+
+	<MudDrawer @bind-Open="@showNavigationMenu" Elevation="8" Variant="DrawerVariant.Responsive">
+		<MudDrawerHeader LinkToIndex="true" Class="align-center d-flex justify-center">
+			<MudImage Src="_content/Faluf.WASM.SharedBlazorUI/images/f.png" Height="45" /><MudText Typo="Typo.h5" Color="Color.Inherit" Class="ms-1">Faluf</MudText>
+		</MudDrawerHeader>
+
+		<MudDivider DividerType="DividerType.Middle" Class="mb-2" />
+
+		<MudNavMenu Color="Color.Default" Bordered="true">
+			<MudNavLink Href="/portfolio" Icon="@Icons.Custom.FileFormats.FileDocument">Portfolio</MudNavLink>
+			<MudNavLink Href="/signalr" Icon="@Icons.Material.Filled.CellTower">SignalR</MudNavLink>
+			<MudNavLink Href="/streaming" Icon="@Icons.Material.Filled.OndemandVideo">Streaming</MudNavLink>
+		</MudNavMenu>
+	</MudDrawer>
+
+	<MudMainContent>
+		@Body
+	</MudMainContent>
+</MudLayout>
+
+@code {
+	private bool showNavigationMenu = true;
+
+	private MudTheme falufTheme = new()
+		{
+			LayoutProperties = new LayoutProperties()
+			{
+				DrawerWidthLeft = "230px",
+				DefaultBorderRadius = "10px",
+				AppbarHeight = "60px"
+			},
+			Typography = new Typography()
+			{
+				H5 = new H5()
+				{
+					FontSize = "1.5em",
+					LetterSpacing = "1px"
+				},
+				Default = new Default()
+				{ 
+					FontSize = "1.1em"
+				}
+			}
+		};
+}

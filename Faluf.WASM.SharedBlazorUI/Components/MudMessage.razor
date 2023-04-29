@@ -1,0 +1,15 @@
+﻿@if (!string.IsNullOrWhiteSpace(Message))
+{
+    <MudAlert Severity="@Severity" ShowCloseIcon="true" CloseIconClicked="() => Message = null" ContentAlignment="HorizontalAlignment.Center" Class="ma-2">
+        @Message
+    </MudAlert>
+}
+
+@code {
+    [Parameter]
+    [EditorRequired]
+    public string? Message { get; set; }
+
+    [Parameter]
+    public Severity Severity { get; set; } = Severity.Error;
+}
