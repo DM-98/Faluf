@@ -8,7 +8,8 @@
 	"routes": [
 		{
 			"route": "/*",
-			"redirect": "https://www.faluf.com"
+			"redirect": "https://www.faluf.com",
+			"statusCode": 301
 		}
 	]
 }
