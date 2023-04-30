@@ -4,11 +4,5 @@
 	},
 	"platform": {
 		"apiRuntime": "dotnet-isolated:7.0"
-	},
-	"routes": [
-		{
-			"route": "/*",
-			"redirect": "https://www.faluf.com"
-		}
-	]
+	}
 }
