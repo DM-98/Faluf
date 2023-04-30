@@ -1,8 +1,19 @@
 ﻿@page "/csharp"
 
+@using Microsoft.JSInterop
+
 @inherits CancelableComponentBase
 
+@inject IJSRuntime JSRuntime
+
 <PageTitle>C# Syntax Highlighter | Home - Faluf</PageTitle>
+
+<style>
+	.editor-container {
+		height: 800px;
+		width: 100%;
+	}
+</style>
 
 <MudContainer MaxWidth="MaxWidth.Large" Class="pa-2">
 	<MudPaper Class="pa-3 py-6 ma-1" Elevation="5">
@@ -10,6 +21,62 @@
 
 		<MudDivider DividerType="DividerType.Middle" Class="mt-2 mb-4" />
 
-		<iframe src="https://try.dot.net/?fromGist=df44833326fcc575e8169fccb9d41fc7"></iframe>
+		<MudSelect T="string" ValueChanged="ChangeThemeAsync" Label="Theme" Variant="Variant.Outlined" Class="mb-3" AnchorOrigin="Origin.BottomCenter" Margin="Margin.Dense">
+			<MudSelectItem Value="@("vs")">
+				Light
+			</MudSelectItem>
+			<MudSelectItem Value="@("vs-dark")">
+				Dark
+			</MudSelectItem>
+		</MudSelect>
+
+		<StandaloneCodeEditor Id="my-editor-instance-id" ConstructionOptions="EditorConstructionOptions" CssClass="editor-container rounded" />
 	</MudPaper>
 </MudContainer>
+
+@code {
+	private async Task ChangeThemeAsync(string e)
+	{
+		await Global.SetTheme(e);
+	}
+
+	private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editor)
+	{
+		return new StandaloneEditorConstructionOptions
+			{
+				Theme = "vs-dark",
+				AutomaticLayout = true,
+				Language = "csharp",
+				Value = 
+""""""
+public sealed record ResponseDTO<T> where T : class
+{
+	public bool IsSuccess { get; set; }
+
+	public string? ErrorMessage { get; set; }
+
+	public string? ExceptionMessage { get; set; }
+
+	public string? StackTrace { get; set; }
+
+	public ErrorType? ErrorType { get; set; }
+
+	public T? Content { get; set; }
+
+	public int RecordCount { get; }
+
+	public ResponseDTO(bool isSuccess, string? errorMessage, string? exceptionMessage, string? stackTrace, ErrorType? errorType, T? content, int recordCount = 0)
+	{
+		IsSuccess = isSuccess;
+		ErrorMessage = errorMessage;
+		ExceptionMessage = exceptionMessage;
+		StackTrace = stackTrace;
+		ErrorType = errorType;
+		Content = content;
+		RecordCount = recordCount;
+	}
+}
+""""""
+			};
+	}
+}
