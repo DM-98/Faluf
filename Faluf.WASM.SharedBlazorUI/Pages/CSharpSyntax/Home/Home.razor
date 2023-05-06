@@ -1,13 +1,10 @@
 ﻿@page "/csharp"
 
-@using Microsoft.JSInterop
-@using System.Diagnostics.CodeAnalysis;
-
 @inherits CancelableComponentBase
 
 @inject IJSRuntime JSRuntime
 
-<PageTitle>C# Syntax Highlighter | Home - Faluf</PageTitle>
+<PageTitle>C# Syntax Highlighter - Faluf</PageTitle>
 
 <style>
 	#code-editor {
@@ -116,7 +113,7 @@
 				AutomaticLayout = true,
 				Language = "csharp",
 				Value =
-								""""""
+											""""""
 public sealed class ResponseDTO<T> where T : class
 {
 	public bool IsSuccess { get; set; }
