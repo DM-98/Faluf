@@ -2,10 +2,101 @@
 
 @inherits CancelableComponentBase
 
-<PageTitle>Bulk data | Home - Faluf</PageTitle>
+@inject HttpClient HttpClient
 
-<MudContainer MaxWidth="MaxWidth.Small" Class="pa-2">
+<PageTitle>Bulk data - Faluf</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="pa-2">
 	<MudPaper Class="pa-3 py-6 ma-1" Elevation="5">
-		<MudText Typo="Typo.h5" Align="Align.Center">Bulk data - Home</MudText>
+		<MudText Typo="Typo.h5" Align="Align.Center">Bulk data</MudText>
+
+		<MudDivider DividerType="DividerType.Middle" Class="my-4" />
+
+		<MudDataGrid T="Employee" MultiSelection="true" Items="@employees" SortMode="SortMode.Multiple" Filterable="true" QuickFilter="@quickFilter" Hideable="true" Bordered="true">
+			<ToolBarContent>
+				<MudText Typo="Typo.h6">Employees</MudText>
+				<MudSpacer />
+				<MudTextField @bind-Value="searchString" Placeholder="Search" Adornment="Adornment.Start" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+			</ToolBarContent>
+			<Columns>
+				<PropertyColumn Property="x => x!.Name" />
+				<PropertyColumn Property="x => x!.Position" />
+				<PropertyColumn Property="x => x!.YearsEmployed" Title="Years Employed" />
+				<PropertyColumn Property="x => x!.Salary" Format="C" />
+				<PropertyColumn Property="x => x!.Salary * x.YearsEmployed" Title="Total Earned" Format="C" />
+				<TemplateColumn CellClass="d-flex justify-end">
+					<CellTemplate>
+						<MudStack Row>
+							<MudRating Size="@Size.Small" SelectedValue="@context.Item!.Rating" />
+							<MudButton Size="@Size.Small" Variant="@Variant.Filled" Color="@Color.Primary">Hire</MudButton>
+						</MudStack>
+					</CellTemplate>
+				</TemplateColumn>
+			</Columns>
+			<PagerContent>
+				<MudDataGridPager T="Employee" />
+			</PagerContent>
+		</MudDataGrid>
 	</MudPaper>
 </MudContainer>
+
+@code {
+	public record Employee(string Name, string Position, int YearsEmployed, int Salary, int Rating);
+	public IReadOnlyCollection<Employee> employees = new HashSet<Employee>();
+
+	private string? searchString;
+
+	private Func<Employee, bool> quickFilter => x =>
+	{
+		if (string.IsNullOrWhiteSpace(searchString))
+			return true;
+
+		if (x.Rating.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase))
+			return true;
+
+		if (x.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+			return true;
+
+		if ($"{x.Salary} {x.Position} {x.YearsEmployed}".Contains(searchString))
+			return true;
+
+		return false;
+	};
+
+	protected override void OnInitialized()
+	{
+		employees = new List<Employee>
+		{
+			new Employee("John", "Accountant", 5, 75_000, 3),
+			new Employee("Mary", "Human Resources Coordinator", 8, 85_000, 2),
+			new Employee("David", "Sales Manager", 12, 140_000, 5),
+			new Employee("Amanda", "Marketing Manager", 10, 160_000, 4),
+			new Employee("Kevin", "Software Developer", 3, 95_000, 1),
+			new Employee("Rachel", "Operations Coordinator", 7, 65_000, 2),
+			new Employee("Michael", "Graphic Designer", 6, 80_000, 2),
+			new Employee("Stephanie", "IT Director", 15, 200_000, 6),
+			new Employee("Eric", "Financial Manager", 9, 120_000, 4),
+			new Employee("Samantha", "Customer Service Manager", 4, 90_000, 2),
+			new Employee("Jonathan", "Business Analyst", 6, 100_000, 2),
+			new Employee("Jessica", "Project Manager", 10, 150_000, 5),
+			new Employee("Derek", "Product Manager", 12, 175_000, 5),
+			new Employee("Olivia", "Event Coordinator", 3, 70_000, 1),
+			new Employee("William", "Account Manager", 8, 110_000, 3),
+			new Employee("Nicole", "Public Relations Manager", 11, 130_000, 4),
+			new Employee("Anthony", "Human Resources Manager", 13, 170_000, 5),
+			new Employee("Catherine", "Software Engineer", 2, 85_000, 1),
+			new Employee("Jacob", "Marketing Coordinator", 5, 60_000, 2),
+			new Employee("Katie", "Operations Manager", 10, 145_000, 4),
+			new Employee("Ethan", "Financial Analyst", 7, 95_000, 3),
+			new Employee("Haley", "Customer Support Manager", 5, 75_000, 2),
+			new Employee("Andrew", "Business Development Manager", 9, 135_000, 4),
+			new Employee("Lindsay", "Technical Writer", 4, 60_000, 1),
+			new Employee("Daniel", "Sales Representative", 6, 90_000, 2),
+			new Employee("Caroline", "Accounting Manager", 11, 125_000, 4),
+			new Employee("Ryan", "IT Manager", 14, 190_000, 5),
+			new Employee("Vanessa", "Financial Controller", 8, 150_000, 3),
+			new Employee("Patrick", "Customer Success Manager", 3, 80_000, 1),
+			new Employee("Taylor", "Marketing Specialist", 5, 70_000, 2)
+		};
+	}
+}
