@@ -5,37 +5,42 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-	<MudAppBar DisableGutters="true">
+	<MudAppBar DisableGutters="true" Elevation="0">
 		<MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" OnClick="() => showNavigationMenu = !showNavigationMenu" Class="ms-2" />
 
 		<MudSpacer />
 
 		<MudMenu Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" AnchorOrigin="Origin.BottomLeft" Class="me-2">
-			<MudMenuItem>Terms & Service</MudMenuItem>
-			<MudMenuItem>Privacy Policy</MudMenuItem>
+			<MudMenuItem>Terms & service</MudMenuItem>
+			<MudMenuItem>Privacy policy</MudMenuItem>
 			<MudMenuItem>Contact</MudMenuItem>
 		</MudMenu>
 
 		<MudFab Href="/signin" Color="Color.Tertiary" Label="Sign in" Size="Size.Small" StartIcon="@Icons.Material.Filled.PersonOutline" Class="me-4" />
 	</MudAppBar>
 
-	<MudDrawer @bind-Open="@showNavigationMenu" Elevation="8" Variant="DrawerVariant.Responsive">
-		<MudDrawerHeader LinkToIndex="true" Class="align-center d-flex justify-center">
-			<MudImage Src="_content/Faluf.WASM.SharedBlazorUI/images/logo_transparent.png" Height="150" />
+	<MudDrawer @bind-Open="@showNavigationMenu" Elevation="0" Variant="DrawerVariant.Responsive">
+		<MudDrawerHeader LinkToIndex="true" Class="justify-center">
+			<MudImage Src="_content/Faluf.WASM.SharedBlazorUI/images/logo_transparent.png" Width="150" Height="150" />
 		</MudDrawerHeader>
 
 		<MudDivider DividerType="DividerType.Middle" Class="mb-2" />
 
-		<MudNavMenu Color="Color.Default" Margin="Margin.Normal" Bordered="true">
-			<MudNavLink Href="/portfolio" Icon="@Icons.Material.Filled.Dashboard">Portfolio</MudNavLink>
-			<MudNavLink Href="/signalr" Icon="@Icons.Material.Filled.CellTower">SignalR</MudNavLink>
-			<MudNavLink Href="/streaming" Icon="@Icons.Material.Filled.OndemandVideo">Streaming</MudNavLink>
-			<MudNavLink Href="/openai" Icon="@Icons.Material.Filled.BubbleChart">AI</MudNavLink>
-			<MudNavLink Href="/csharp" Icon="@Icons.Material.Filled.DataObject">Code Editor</MudNavLink>
-			<MudNavLink Href="/html" Icon="@Icons.Material.Filled.Html">HTML markdown</MudNavLink>
-			<MudNavLink Href="/data" Icon="@Icons.Material.Filled.List">Bulk data</MudNavLink>
-			<MudNavLink Href="/calculator" Icon="@Icons.Material.Filled.Calculate">Calculator</MudNavLink>
+		<MudNavMenu Bordered="true">
+			<MudNavLink Href="/portfolio" Icon="@Icons.Material.Filled.Dashboard" DisableRipple="true">Portfolio</MudNavLink>
+			<MudNavLink Href="/signalr" Icon="@Icons.Material.Filled.CellTower" DisableRipple="true">SignalR</MudNavLink>
+			<MudNavLink Href="/streaming" Icon="@Icons.Material.Filled.OndemandVideo" DisableRipple="true">Streaming</MudNavLink>
+			<MudNavLink Href="/openai" Icon="@Icons.Material.Filled.BubbleChart" DisableRipple="true">AI</MudNavLink>
+			<MudNavLink Href="/csharp" Icon="@Icons.Material.Filled.DataObject" DisableRipple="true">Code editor</MudNavLink>
+			<MudNavLink Href="/html" Icon="@Icons.Material.Filled.Html" DisableRipple="true">HTML markdown</MudNavLink>
+			<MudNavLink Href="/data" Icon="@Icons.Material.Filled.List" DisableRipple="true">Bulk data</MudNavLink>
+			<MudNavLink Href="/calculator" Icon="@Icons.Material.Filled.Calculate" DisableRipple="true">Calculator</MudNavLink>
 		</MudNavMenu>
+
+		<div class="nav-footer">
+			<p><label>Copyright &copy; @DateTime.UtcNow.Year - Faluf</label></p>
+			<p><code><label>Version @Assembly.GetExecutingAssembly().GetName().Version</label></code></p>
+		</div>
 	</MudDrawer>
 
 	<MudMainContent>
@@ -62,7 +67,7 @@
 					LetterSpacing = "1px"
 				},
 				Default = new Default()
-				{ 
+				{
 					FontSize = "1.1em"
 				}
 			}

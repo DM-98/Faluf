@@ -1,0 +1,17 @@
+﻿<PageTitle>Error - Faluf</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="pa-2">
+	<MudPaper Class="pa-3 py-6 ma-1" Elevation="5">
+		<MudText Typo="Typo.h5" Align="Align.Center" Color="Color.Error">@ErrorTitle</MudText>
+		<MudDivider DividerType="DividerType.Middle" Class="my-4" />
+		<MudText Typo="Typo.h6" Align="Align.Center">@ErrorBody</MudText>
+	</MudPaper>
+</MudContainer>
+
+@code {
+	[Parameter]
+	public string ErrorTitle { get; set; } = "Error";
+
+	[Parameter]
+	public string ErrorBody { get; set; } = "Something went wrong - go back and try again or contact support if the problem persists.";
+}
