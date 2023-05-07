@@ -39,7 +39,7 @@
 
 		<div class="nav-footer">
 			<p><label>Copyright &copy; @DateTime.UtcNow.Year - Faluf</label></p>
-			<p><code><label>Version @(Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "Ukendt version")</label></code></p>
+			<p><code><label>Version @(Assembly.GetEntryAssembly()?.GetName().Version?.ToString(3))</label></code></p>
 		</div>
 	</MudDrawer>
 
