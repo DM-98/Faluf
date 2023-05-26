@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider IsDarkMode="true" Theme="@falufTheme" />
+<MudThemeProvider IsDarkMode="true" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -19,15 +19,19 @@
 		<MudFab Href="/signin" Color="Color.Tertiary" Label="Sign in" Size="Size.Small" StartIcon="@Icons.Material.Filled.PersonOutline" Class="me-4" />
 	</MudAppBar>
 
-	<MudDrawer @bind-Open="@showNavigationMenu" Elevation="0" Variant="DrawerVariant.Responsive">
+	<MudDrawer @bind-Open="@showNavigationMenu" Elevation="0" Variant="DrawerVariant.Responsive" Width="280px" Anchor="Anchor.Start" Style="overflow:auto;">
 		<MudDrawerHeader LinkToIndex="true" Class="justify-center">
-			<MudImage Src="_content/Faluf.WASM.SharedBlazorUI/images/logo_transparent.png" Width="150" Height="150" />
+			<MudImage Src="_content/Faluf.WASM.SharedBlazorUI/images/logo_transparent.png" Fluid="true" ObjectPosition="ObjectPosition.Center" ObjectFit="ObjectFit.Contain" Height="150" Width="150" />
 		</MudDrawerHeader>
 
 		<MudDivider DividerType="DividerType.Middle" Class="mb-2" />
 
 		<MudNavMenu Bordered="true">
 			<MudNavLink Href="/" Icon="@Icons.Material.Filled.Dashboard" DisableRipple="true" Match="NavLinkMatch.All">Home</MudNavLink>
+
+			<MudDivider DividerType="DividerType.Middle" Class="my-2 mb-4" />
+
+			<MudText Align="Align.Center" Typo="Typo.body2"><label><u>Experiments</u></label></MudText>
 			<MudNavLink Href="/signalr" Icon="@Icons.Material.Filled.CellTower" DisableRipple="true" Match="NavLinkMatch.Prefix">SignalR</MudNavLink>
 			<MudNavLink Href="/streaming" Icon="@Icons.Material.Filled.OndemandVideo" DisableRipple="true" Match="NavLinkMatch.Prefix">Streaming</MudNavLink>
 			<MudNavLink Href="/openai" Icon="@Icons.Material.Filled.BubbleChart" DisableRipple="true" Match="NavLinkMatch.Prefix">AI</MudNavLink>
@@ -35,12 +39,20 @@
 			<MudNavLink Href="/html" Icon="@Icons.Material.Filled.Html" DisableRipple="true" Match="NavLinkMatch.Prefix">HTML Markdown</MudNavLink>
 			<MudNavLink Href="/data" Icon="@Icons.Material.Filled.List" DisableRipple="true" Match="NavLinkMatch.Prefix">Bulk Data</MudNavLink>
 			<MudNavLink Href="/calculator" Icon="@Icons.Material.Filled.Calculate" DisableRipple="true" Match="NavLinkMatch.Prefix">Calculator</MudNavLink>
+
+			<MudDivider DividerType="DividerType.Middle" Class="my-2 mb-4" />
+
+			<MudText Align="Align.Center" Typo="Typo.body2"><label><u>Projects</u></label></MudText>
+			<MudNavLink Href="/innopixel-kontrolpanel" Icon="@Icons.Material.Filled.WebAsset" DisableRipple="true" Match="NavLinkMatch.Prefix">Innopixel Kontrolpanel</MudNavLink>
+			<MudNavLink Href="/dbr" Icon="@Icons.Material.Filled.WebAsset" DisableRipple="true" Match="NavLinkMatch.Prefix">Dansk Bilbrancheråd</MudNavLink>
 		</MudNavMenu>
 
-		<div class="nav-footer">
-			<p><label>Copyright &copy; @DateTime.UtcNow.Year - Faluf</label></p>
-			<p><code><label>Version @(Assembly.GetEntryAssembly()?.GetName().Version?.ToString(3))</label></code></p>
-		</div>
+		<MudSpacer />
+
+		<MudStack Spacing="0" Justify="Justify.Center" AlignItems="AlignItems.Center">
+			<MudText Color="Color.Primary" Align="@Align.Center" Typo="Typo.caption"><label>Copyright &copy; @DateTime.UtcNow.Year - Faluf</label></MudText>
+			<MudText Color="Color.Primary" Align="@Align.Center" Typo="Typo.caption"><label><code>Version @(Assembly.GetEntryAssembly()?.GetName().Version?.ToString(3))</code></label></MudText>
+		</MudStack>
 	</MudDrawer>
 
 	<MudMainContent>
@@ -50,26 +62,4 @@
 
 @code {
 	private bool showNavigationMenu = true;
-
-	private MudTheme falufTheme = new()
-		{
-			LayoutProperties = new LayoutProperties()
-			{
-				DrawerWidthLeft = "240px",
-				DefaultBorderRadius = "10px",
-				AppbarHeight = "60px"
-			},
-			Typography = new Typography()
-			{
-				H5 = new H5()
-				{
-					FontSize = "1.5em",
-					LetterSpacing = "1px"
-				},
-				Default = new Default()
-				{
-					FontSize = "1.1em"
-				}
-			}
-		};
 }

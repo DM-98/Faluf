@@ -64,7 +64,6 @@ html, body {
 		content: var(--blazor-load-percentage-text, "Loading");
 	}
 
-
 .nav-footer {
 	position: absolute;
 	left: 0;

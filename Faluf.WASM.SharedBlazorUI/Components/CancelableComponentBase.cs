@@ -22,10 +22,22 @@ public abstract class CancelableComponentBase : ComponentBase, IDisposable
 	protected void DisplayError<T>(ResponseDTO<T> result) where T : class
 	{
 		ErrorMessage = result.ErrorMessage + $" (#{(result.ErrorType.HasValue ? (int)result.ErrorType : 0)})";
+
 #if DEBUG
-		ErrorMessage += result.ExceptionMessage?.Any() ?? false ? " | " + result.ExceptionMessage : string.Empty;
-		ErrorMessage += result.StackTrace?.Any() ?? false ? " | " + result.StackTrace : string.Empty;
-		ErrorMessage += result.ErrorType.HasValue ? " | " + result.ErrorType.ToString() : string.Empty;
+		if (result.ExceptionMessage?.Length > 0)
+		{
+			ErrorMessage += " | " + result.ExceptionMessage;
+		}
+		
+		if (result.StackTrace?.Length > 0)
+		{
+			ErrorMessage += " | " + result.StackTrace;
+		}
+		
+		if (result.ErrorType.HasValue)
+		{
+			ErrorMessage += " | " + result.ErrorType.ToString();
+		}
 #endif
 	}
 }

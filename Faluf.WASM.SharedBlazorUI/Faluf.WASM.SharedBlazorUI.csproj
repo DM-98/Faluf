@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
@@ -13,8 +13,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="BlazorMonaco" Version="3.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.5" />
-		<PackageReference Include="MudBlazor" Version="6.2.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0-preview.4.23260.4" />
+		<PackageReference Include="MudBlazor" Version="6.3.0" />
 	</ItemGroup>
 
 	<ItemGroup>
